@@ -5,13 +5,16 @@ f5_pass: "my_password"
 f5_admin_port: 443
 
 #All Deployment Types
+
   #iApp Variables
 iapp_vip_address: "172.16.192.100"
 deployment_type: "uag"  #option can be APM, LTM or UAG
+
   #SSL Info
 iapp_ssl_cert: "/Common/Wildcard-2022" # If want to use F5 Default Cert for Testing use "/Common/default.crt"
 iapp_ssl_key: "/Common/Wildcard-2022" # If want to use F5 Default Cert for Testing use "/Common/default.key"
 iapp_ssl_chain: "/#do_not_use#" 
+
   #Horizon Info
 iapp_horizon_fqdn: "horizon.mycorp.com"
 iapp_horizon_netbios: "My-Corp"
