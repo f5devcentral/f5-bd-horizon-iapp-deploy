@@ -5,7 +5,7 @@ f5_pass: "my_password"
 f5_admin_port: 443
 
 #All Deployment Types
-deployment_type: "uag"  #option can be APM, LTM or UAG
+deployment_type: "apm"  #option can be APM, LTM or UAG
 
   #iApp Variables
 iapp_vip_address: "172.16.192.100"
