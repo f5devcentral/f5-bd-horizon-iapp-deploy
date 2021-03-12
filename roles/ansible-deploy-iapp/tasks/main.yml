@@ -1,9 +1,18 @@
 ---
+#Bypass for Testing Vars File will only work if file exists - else ignores and uses vars/horizon_iapp_vars.yml
+- ansible.builtin.stat:
+    path: /git/vars/horizon_iapp_vars.yml
+  register: variables_bypass
+
+- ansible.builtin.include_vars:
+    file: /git/vars/horizon_iapp_vars.yml
+  when: variables_bypass.stat.exists
+
 - name: Build JSON payload
-  template: src=f5.horizon.{{deployment_type |lower }}.j2 dest=/tmp/f5.horizon.json
+  ansible.builtin.template: src=f5.horizon.{{deployment_type |lower }}.j2 dest=/tmp/f5.horizon.json
 
 - name: Deploy F5 Horizon iApp
-  bigip_iapp_service:
+  f5networks.f5_modules.bigip_iapp_service: #Using Collections if not use - bigip_iapp_service:
     name: "VMware-Horizon"
     template: "f5.vmware_view.v1.5.9"
     parameters: "{{ lookup('template', '/tmp/f5.horizon.json') }}"
