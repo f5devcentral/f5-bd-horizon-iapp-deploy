@@ -1,0 +1,223 @@
+{
+  "lists": [        {  
+      "name": "irules__irules",
+      "value": []
+    }
+  ],
+  "tables": [
+    {
+      "name": "apm__active_directory_server",
+    },
+    {
+      "name": "apm__multiple"
+    },
+    {
+      "name": "apm__radius_server"
+    },
+    {
+      "name": "apm__vcs_fqdn"
+    },
+    {
+      "name": "monitor__application"
+    },	
+    {
+      "name": "pool__pool_members",
+      "columnNames": [
+        "addr",
+	    	"port_secure",
+	    	"connection_limit"
+      ],
+      "rows": [
+          {% for item in iapp_horizon_uag_servers %}
+            {
+              "row": [
+              "{{item.ip}}",
+              "{{item.port}}",
+              "0"
+            ] 
+            }{{ ", " if not loop.last else ""}}
+        {% endfor %}
+      ]
+    },
+    {
+      "name": "pool__pool_members_internal"
+    }
+  ],
+  "variables": [
+    {
+      "name": "apm__use_apm",
+      "encrypted": "no",
+      "value": "no"
+    },
+    {
+      "name": "blast__forward_blast",
+      "encrypted": "no",
+      "value": "yes"
+    },
+    {
+      "name": "blast__use_blast",
+      "encrypted": "no",
+      "value": "yes"
+    },
+    {
+      "name": "client__http_compression",
+      "encrypted": "no",
+      "value": "/#do_not_use#"
+    },
+    {
+      "name": "client__standard_caching",
+      "encrypted": "no",
+      "value": "/#do_not_use#"
+    },
+	{
+      "name": "client__tcp_opt",
+      "encrypted": "no",
+	  "value": "/#wan#"
+    },
+    {
+      "name": "monitor__frequency",
+      "encrypted": "no",
+      "value": "30"
+    },
+	{
+      "name": "monitor__monitor",
+      "encrypted": "no",
+	  "value": "/#create_new#"
+    },
+    {
+      "name": "options__advanced_mode",
+      "encrypted": "no",
+      "value": "yes"
+    },		
+    {
+      "name": "options__display_help",
+      "encrypted": "no",
+      "value": "show"
+    },
+	{
+      "name": "pcoip__forward",
+      "encrypted": "no",
+      "value": "yes"
+    },	
+	{
+      "name": "pcoip__use_pcoip",
+      "encrypted": "no",
+      "value": "yes"
+    },
+	{
+      "name": "pool__bigip_route",
+      "encrypted": "no",
+      "value": "no"
+    },
+	{
+      "name": "pool__fqdn",
+      "encrypted": "no",
+	  "value": "{{iapp_horizon_fqdn}}"
+    },
+    {
+      "name": "pool__lb_method_choice",
+      "encrypted": "no",
+      "value": "least-connections-member"
+    },
+    {
+      "name": "pool__persistence",
+      "encrypted": "no",
+      "value": "/#default#"
+    },
+	{
+      "name": "pool__same_subnet",
+      "encrypted": "no",
+	    "value": "no"
+    },
+    {
+      "name": "pool__slow_ramp_setvalue",
+      "encrypted": "no",
+      "value": "300"
+    },		
+    {
+      "name": "pool__tcp_req_queuing",
+      "encrypted": "no",
+      "value": "no"
+    },	
+	{
+      "name": "pool__use_pga",
+      "encrypted": "no",
+      "value": "no"
+    },
+    {
+      "name": "pool__use_slow_ramp",
+      "encrypted": "no",
+      "value": "yes"
+    },
+	{
+      "name": "pool__vs_addr",
+      "encrypted": "no",
+	  "value": "{{iapp_vip_address}}"
+    },		
+    {
+      "name": "pool__vs_port",
+      "encrypted": "no",
+      "value": "443"
+    },	
+	{
+      "name": "pool__xff",
+      "encrypted": "no",
+      "value": "yes"
+    },
+	{
+      "name": "server__oneconnect",
+      "encrypted": "no",
+      "value": "/#do_not_use#"
+    },
+	{
+      "name": "server__tcp_opt",
+      "encrypted": "no",
+      "value": "/#lan#"
+    },	
+	{
+      "name": "ssl__cert",
+      "encrypted": "no",
+	  "value": "{{iapp_ssl_cert}}"
+    },
+    {
+      "name": "ssl__client_ssl_profile",
+      "encrypted": "no",
+      "value": "/#default#"
+    },
+	{
+      "name": "ssl__key",
+      "encrypted": "no",
+	  "value": "{{iapp_ssl_key}}"
+    },
+    {
+      "name": "ssl__mode",
+      "encrypted": "no",
+      "value": "client_ssl_server_ssl"
+    },		
+    {
+      "name": "ssl__redirect_port",
+      "encrypted": "no",
+      "value": "80"
+    },	
+    {
+      "name": "ssl__redirect_to_https",
+      "encrypted": "no",
+      "value": "yes"
+    },	
+	{
+      "name": "ssl__server_ssl_profile",
+      "encrypted": "no",
+      "value": "/#default#"
+    },
+	{
+      "name": "ssl__use_cert_chain",
+      "encrypted": "no",
+	  "value": "{{iapp_ssl_chain}}"
+    },
+    {
+      "name": "stats__request_logging",
+      "encrypted": "no",
+      "value": "/#do_not_use#"
+    }
+  ]
+}

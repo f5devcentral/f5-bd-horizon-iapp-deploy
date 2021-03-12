@@ -1,0 +1,15 @@
+---
+- name: Build JSON payload
+  template: src=f5.horizon.{{deployment_type |lower }}.j2 dest=/tmp/f5.horizon.json
+
+- name: Deploy F5 Horizon iApp
+  bigip_iapp_service:
+    name: "VMware-Horizon"
+    template: "f5.vmware_view.v1.5.9"
+    parameters: "{{ lookup('template', '/tmp/f5.horizon.json') }}"
+    provider:
+      server: "{{f5_ip}}"
+      user: "{{f5_user}}"
+      password: "{{f5_pass}}"
+      validate_certs: no
+  delegate_to: localhost

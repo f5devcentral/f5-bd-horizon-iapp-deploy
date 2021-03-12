@@ -1,0 +1,8 @@
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  vars_files:
+  - vars/f5_vars.yml
+  roles:
+  - { role: ansible-deploy-iapp }
+

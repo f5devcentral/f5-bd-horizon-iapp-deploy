@@ -1,0 +1,282 @@
+{
+  "lists": [        {  
+      "name": "irules__irules",
+      "value": []
+    }
+  ],
+  "tables": [
+    {
+      "name": "apm__active_directory_server",
+      "columnNames": [
+        "host",
+		"addr"
+      ],
+      "rows": [
+          {% for item in iapp_active_directory_servers %}
+            {
+              "row": [
+              "{{item.name}}",
+              "{{item.ip}}"
+            ] 
+            }{{ ", " if not loop.last else ""}}
+        {% endfor %}
+      ]
+    },
+    {
+      "name": "apm__multiple"
+    },
+    {
+      "name": "apm__radius_server"
+    },
+    {
+      "name": "apm__vcs_fqdn"
+    },
+    {
+      "name": "monitor__application"
+    },	
+    {
+      "name": "pool__pool_members",
+      "columnNames": [
+        "addr",
+		"port_secure",
+		"connection_limit"
+      ],
+      "rows": [
+          {% for item in iapp_horizon_connection_servers %}
+            {
+              "row": [
+              "{{item.ip}}",
+              "{{item.port}}",
+              "0"
+            ] 
+            }{{ ", " if not loop.last else ""}}
+        {% endfor %}
+      ]
+    },
+    {
+      "name": "pool__pool_members_internal"
+    }
+  ],
+  "variables": [
+    {
+      "name": "apm__aaa_profile",
+      "encrypted": "no",
+      "value": "/#create_new#"
+    },
+    {
+      "name": "apm__active_directory_password",
+      "encrypted": "{{iapp_active_directory_password_encrypted}}",
+      "value": "{{iapp_active_directory_password}}"
+    },
+    {
+      "name": "apm__active_directory_username",
+      "encrypted": "no",
+	  "value": "{{iapp_active_directory_username}}"
+    },
+    {
+      "name": "apm__ad_monitor",
+      "encrypted": "no",
+      "value": "/#use_icmp#"
+    },
+	{
+      "name": "apm__credentials",
+      "encrypted": "no",
+	  "value": "yes"
+    },
+    {
+      "name": "apm__logging",
+      "encrypted": "no",
+      "value": "/Common/default-log-setting"
+    },
+	{
+      "name": "apm__multiple_domain",
+      "encrypted": "no",
+	  "value": "no"
+    },
+    {
+      "name": "apm__nat_proxy_addr",
+      "encrypted": "no",
+      "value": "{{iapp_horizon_nat_addresss}}"
+    },
+	{
+      "name": "apm__netbios_domain",
+      "encrypted": "no",
+	  "value": "{{iapp_horizon_domainname}}"
+    },
+	{
+      "name": "apm__netbios_name",
+      "encrypted": "no",
+	  "value": "{{iapp_horizon_netbios}}"
+    },
+    {
+      "name": "apm__use_apm",
+      "encrypted": "no",
+      "value": "yes"
+    },
+    {
+      "name": "apm__use_disclaimer",
+      "encrypted": "no",
+      "value": "no"
+    },
+    {
+      "name": "apm__use_html5",
+      "encrypted": "no",
+      "value": "yes"
+    },
+	{
+      "name": "apm__use_securid",
+      "encrypted": "no",
+	  "value": "no"
+    },
+    {
+      "name": "apm__use_smartcard",
+      "encrypted": "no",
+      "value": "no"
+    },
+	{
+      "name": "apm__use_usb_redirection",
+      "encrypted": "no",
+      "value": "yes"
+    },
+	{
+      "name": "client__tcp_opt",
+      "encrypted": "no",
+	  "value": "/#wan#"
+    },
+    {
+      "name": "monitor__frequency",
+      "encrypted": "no",
+      "value": "30"
+    },
+	{
+      "name": "monitor__monitor",
+      "encrypted": "no",
+	  "value": "/#create_new#"
+    },
+    {
+      "name": "options__advanced_mode",
+      "encrypted": "no",
+      "value": "yes"
+    },		
+    {
+      "name": "options__display_help",
+      "encrypted": "no",
+      "value": "show"
+    },	
+	{
+      "name": "pool__bigip_route",
+      "encrypted": "no",
+      "value": "no"
+    },
+	{
+      "name": "pool__fqdn",
+      "encrypted": "no",
+	  "value": "{{iapp_horizon_fqdn}}"
+    },
+    {
+      "name": "pool__lb_method_choice",
+      "encrypted": "no",
+      "value": "least-connections-member"
+    },
+	{
+      "name": "pool__same_subnet",
+      "encrypted": "no",
+	  "value": "no"
+    },
+    {
+      "name": "pool__slow_ramp_setvalue",
+      "encrypted": "no",
+      "value": "300"
+    },		
+    {
+      "name": "pool__tcp_req_queuing",
+      "encrypted": "no",
+      "value": "no"
+    },	
+	{
+      "name": "pool__use_pga",
+      "encrypted": "no",
+      "value": "no"
+    },
+	{
+      "name": "pool__use_same_pool",
+      "encrypted": "no",
+	  "value": "yes"
+    },
+    {
+      "name": "pool__use_slow_ramp",
+      "encrypted": "no",
+      "value": "yes"
+    },
+	{
+      "name": "pool__vs_addr",
+      "encrypted": "no",
+	  "value": "{{iapp_vip_address}}"
+    },
+    {
+      "name": "pool__vs_addr_internal",
+      "encrypted": "no",
+      "value": ""
+    },		
+    {
+      "name": "pool__vs_port",
+      "encrypted": "no",
+      "value": "443"
+    },	
+	{
+      "name": "pool__xff",
+      "encrypted": "no",
+      "value": "yes"
+    },
+	{
+      "name": "server__tcp_opt",
+      "encrypted": "no",
+      "value": "/#lan#"
+    },	
+	{
+      "name": "ssl__cert",
+      "encrypted": "no",
+	  "value": "{{iapp_ssl_cert}}"
+    },
+    {
+      "name": "ssl__client_ssl_profile",
+      "encrypted": "no",
+      "value": "/#default#"
+    },
+	{
+      "name": "ssl__key",
+      "encrypted": "no",
+	  "value": "{{iapp_ssl_key}}"
+    },
+    {
+      "name": "ssl__mode",
+      "encrypted": "no",
+      "value": "client_ssl_server_ssl"
+    },		
+    {
+      "name": "ssl__redirect_port",
+      "encrypted": "no",
+      "value": "80"
+    },	
+    {
+      "name": "ssl__redirect_to_https",
+      "encrypted": "no",
+      "value": "yes"
+    },	
+	{
+      "name": "ssl__server_ssl_profile",
+      "encrypted": "no",
+      "value": "/#default#"
+    },
+	{
+      "name": "ssl__use_cert_chain",
+      "encrypted": "no",
+	  "value": "{{iapp_ssl_chain}}"
+    },
+    {
+      "name": "stats__request_logging",
+      "encrypted": "no",
+      "value": "/#do_not_use#"
+    }
+  ]
+}

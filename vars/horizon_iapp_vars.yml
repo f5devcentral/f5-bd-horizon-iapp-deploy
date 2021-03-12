@@ -1,0 +1,37 @@
+#F5 Authentication
+f5_ip: 192.168.1.10
+f5_user: admin
+f5_pass: "my_password" 
+f5_admin_port: 443
+
+#All Deployment Types
+  #iApp Variables
+iapp_vip_address: "172.16.192.100"
+deployment_type: "uag"  #option can be APM, LTM or UAG
+  #SSL Info
+iapp_ssl_cert: "/Common/Wildcard-2022" # If want to use F5 Default Cert for Testing use "/Common/default.crt"
+iapp_ssl_key: "/Common/Wildcard-2022" # If want to use F5 Default Cert for Testing use "/Common/default.key"
+iapp_ssl_chain: "/#do_not_use#" 
+  #Horizon Info
+iapp_horizon_fqdn: "horizon.mycorp.com"
+iapp_horizon_netbios: "My-Corp"
+iapp_horizon_domainname: "My-Corp.com"
+iapp_horizon_nat_addresss: "" #enter NAT address or leave empty for none
+
+# APM and LTM Deployment Types
+iapp_horizon_connection_servers:
+  - { ip: "192.168.1.50", port: "443" }  # to add Connection Servers just add additional line 
+  - { ip: "192.168.1.51", port: "443" }
+
+#APM Deployment Type
+iapp_active_directory_username: "my_ad_user"
+iapp_active_directory_password: "my_ad_password"
+iapp_active_directory_password_encrypted: "no" # This is still being validated but requires the encrypted password from the BIG-IP
+iapp_active_directory_servers: 
+  - { name: "ad_server_1.mycorp.com", ip: "192.168.1.20" } # to add Active Directory Servers just add additional lines
+  - { name: "ad_server_2.mycorp.com", ip: "192.168.1.21" }
+
+# UAG Deployment Type
+iapp_horizon_uag_servers:
+  - { ip: "192.168.199.50", port: "443" }  # to add UAG Servers Just add additional lines
+  - { ip: "192.168.199.51", port: "443" }
