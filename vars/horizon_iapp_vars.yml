@@ -5,10 +5,11 @@ f5_pass: "my_password"
 f5_admin_port: 443
 
 #All Deployment Types
+deployment_type: "uag"  #option can be APM, LTM or UAG
 
   #iApp Variables
 iapp_vip_address: "172.16.192.100"
-deployment_type: "uag"  #option can be APM, LTM or UAG
+iapp_template_name: "f5.vmware_view.v1.5.9"
 
   #SSL Info
 iapp_ssl_cert: "/Common/Wildcard-2022" # If want to use F5 Default Cert for Testing use "/Common/default.crt"
