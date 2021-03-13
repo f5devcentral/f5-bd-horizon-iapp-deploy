@@ -1,13 +1,4 @@
 ---
-#Bypass for Testing Vars File will only work if file exists - else ignores and uses vars/horizon_iapp_vars.yml
-- ansible.builtin.stat:
-    path: /git/vars/horizon_iapp_vars.yml
-  register: variables_bypass
-
-- ansible.builtin.include_vars:
-    file: /git/vars/horizon_iapp_vars.yml
-  when: variables_bypass.stat.exists
-
 - name: Build JSON payload
   ansible.builtin.template: src=f5.horizon.{{deployment_type |lower }}.j2 dest=/tmp/f5.horizon.json
 

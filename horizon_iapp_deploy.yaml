@@ -4,5 +4,8 @@
   vars_files:
   - vars/horizon_iapp_vars.yml
   roles:
+  - { role: bypass-variables }
+  - { role: create-irule, when: "deployment_type |lower == 'ltm'" }
   - { role: ansible-deploy-iapp }
+  
 

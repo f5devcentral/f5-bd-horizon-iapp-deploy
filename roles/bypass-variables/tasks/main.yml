@@ -1,0 +1,9 @@
+---
+#Bypass for Testing Vars File will only work if file exists - else ignores and uses vars/horizon_iapp_vars.yml
+- ansible.builtin.stat:
+    path: /git/vars/horizon_iapp_vars.yml
+  register: variables_bypass
+
+- ansible.builtin.include_vars:
+    file: /git/vars/horizon_iapp_vars.yml
+  when: variables_bypass.stat.exists

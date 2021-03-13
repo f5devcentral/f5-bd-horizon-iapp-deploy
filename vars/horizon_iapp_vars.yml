@@ -22,6 +22,10 @@ iapp_horizon_netbios: "My-Corp"
 iapp_horizon_domainname: "My-Corp.com"
 iapp_horizon_nat_addresss: "" #enter NAT address or leave empty for none
 
+# LTM Deployment Type
+iapp_irule_origin:
+  - "/Common/Horizon-Origin-Header"
+  
 # APM and LTM Deployment Types
 iapp_horizon_connection_servers:
   - { ip: "192.168.1.50", port: "443" }  # to add Connection Servers just add additional line 
